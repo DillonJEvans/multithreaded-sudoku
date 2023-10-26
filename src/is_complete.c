@@ -13,6 +13,9 @@ bool IsPuzzleComplete(int **puzzle, int size)
     rows[r].size = size;
     rows[r].start = r;
     pthread_create(&rows[r].thread, NULL, IsRowComplete, &rows[r]);
+    // printf("Thread Created: %#016lx\n", rows[r].thread);
+    // This printf removes a 1,624 byte memory leak
+    // when running on challenger-303. I do not understand.
   }
   bool isComplete = true;
   // Wait for each of the threads to finish.
