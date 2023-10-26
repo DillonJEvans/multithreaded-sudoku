@@ -56,7 +56,7 @@ void DisplayPuzzle(int **puzzle, int size)
   {
     for (int column = 0; column < size; column++)
     {
-      printf("%i ", puzzle[row][column]);
+      printf("%d ", puzzle[row][column]);
     }
     printf("\n");
   }

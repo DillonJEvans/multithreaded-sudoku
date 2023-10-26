@@ -37,6 +37,7 @@ void *SolveFromNumber(void *threadArgs)
   args->puzzle[current.row][current.col] = args->start;
   if (!IsCellValid(args->puzzle, args->size, current))
   {
+    args->result = false;
     pthread_exit(NULL);
   }
   Cell *stack = malloc(sizeof(*stack) * args->size * args->size);
