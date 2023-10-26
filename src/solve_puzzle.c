@@ -32,11 +32,15 @@ bool SolvePuzzle(int ***puzzle, int size)
 void *SolveFromNumber(void *threadArgs)
 {
   ThreadArgs *args = threadArgs;
-  Cell *stack = malloc(sizeof(*stack) * args->size * args->size);
-  int top = 0;
   Cell current = { 0, 0 };
   current = NextEmptyCell(args->puzzle, args->size, current);
   args->puzzle[current.row][current.col] = args->start;
+  if (!IsCellValid(args->puzzle, args->size, current))
+  {
+    pthread_exit(NULL);
+  }
+  Cell *stack = malloc(sizeof(*stack) * args->size * args->size);
+  int top = 0;
   stack[top] = NextEmptyCell(args->puzzle, args->size, current);
   while (top >= 0 && stack[top].row != args->size)
   {
