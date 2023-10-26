@@ -1,6 +1,6 @@
 #include <stdio.h> // fprintf, stderr
 
-#include "puzzle_io.h" // LoadPuzzle, DisplayPuzzle
+#include "puzzle_io.h" // LoadPuzzle, FreePuzzle, DisplayPuzzle
 
 int main(int argc, const char *argv[])
 {
@@ -9,12 +9,10 @@ int main(int argc, const char *argv[])
     fprintf(stderr, "Invalid usage, expected: %s [puzzle_file]\n", argv[0]);
     return 1;
   }
-  int puzzle[MAX_PUZZLE_SIZE][MAX_PUZZLE_SIZE];
-  int subgridSize = LoadPuzzle(argv[1], puzzle);
-  if (subgridSize == INVALID_PUZZLE)
-  {
-    return 1;
-  }
-  DisplayPuzzle(puzzle, subgridSize);
+  int **puzzle;
+  int size = LoadPuzzle(argv[1], &puzzle);
+  if (size == INVALID_PUZZLE) return 1;
+  DisplayPuzzle(puzzle, size);
+  FreePuzzle(puzzle, size);
   return 0;
 }
