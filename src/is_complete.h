@@ -1,7 +1,7 @@
 #ifndef IS_COMPLETE_H_
 #define IS_COMPLETE_H_
 
-#include <pthread.h> // pthread_t, pthread_create, pthread_join, pthread_exit
+#include <pthread.h> // pthread_create, pthread_join, pthread_exit
 #include <stdbool.h> // bool
 #include <stdio.h>   // printf
 #include <stdlib.h>  // malloc, free
