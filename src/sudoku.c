@@ -3,6 +3,7 @@
 #include "is_complete.h" // IsPuzzleComplete
 #include "is_valid.h"    // IsPuzzleValid
 #include "puzzle_io.h"   // LoadPuzzle, FreePuzzle, DisplayPuzzle
+#include "solve_puzzle.h" // SolvePuzzle
 
 int main(int argc, const char *argv[])
 {
@@ -23,6 +24,18 @@ int main(int argc, const char *argv[])
     bool isValid = IsPuzzleValid(puzzle, size);
     printf("Valid puzzle? ");
     puts(isValid ? "true" : "false");
+  }
+  else
+  {
+    bool isSolved = SolvePuzzle(&puzzle, size);
+    if (isSolved)
+    {
+      DisplayPuzzle(puzzle, size);
+    }
+    else
+    {
+      printf("Unsolvable\n");
+    }
   }
   FreePuzzle(puzzle, size);
   return 0;

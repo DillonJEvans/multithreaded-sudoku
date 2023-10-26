@@ -14,6 +14,6 @@ typedef struct
 } ThreadArgs;
 
 // If THREAD_DEBUG is defined, threads will print their status.
-#define THREAD_DEBUG
+// #define THREAD_DEBUG
 
 #endif // THREAD_ARGS_H

@@ -3,6 +3,7 @@
 
 #include <stdio.h>  // printf, perror, fopen, fscanf, fclose, FILE
 #include <stdlib.h> // malloc, free
+#include <string.h> // memcpy
 
 #define INVALID_PUZZLE (-1)
 
@@ -10,6 +11,9 @@
 // Returns the size of the puzzle.
 // Returns INVALID_PUZZLE and prints an error message if anything went wrong.
 int LoadPuzzle(const char *filename, int ***puzzle);
+
+// Returns a copy of the puzzle.
+int **CopyPuzzle(int **puzzle, int size);
 
 // Frees the puzzle.
 void FreePuzzle(int **puzzle, int size);

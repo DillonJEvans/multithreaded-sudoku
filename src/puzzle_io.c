@@ -29,6 +29,18 @@ int LoadPuzzle(const char *filename, int ***puzzle)
   return size;
 }
 
+int **CopyPuzzle(int **puzzle, int size)
+{
+  int **copy = malloc(sizeof(*copy) * size);
+  for (int r = 0; r < size; r++)
+  {
+    int *row = malloc(sizeof(*row) * size);
+    memcpy(row, puzzle[r], sizeof(*row) * size);
+    copy[r] = row;
+  }
+  return copy;
+}
+
 void FreePuzzle(int **puzzle, int size)
 {
   for (int row = 0; row < size; row++)
