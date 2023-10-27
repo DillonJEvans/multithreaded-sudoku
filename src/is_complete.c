@@ -5,17 +5,15 @@ bool IsPuzzleComplete(int **puzzle, int size)
   #ifdef THREAD_DEBUG
     puts("");
   #endif // THREAD_DEBUG
+
   ThreadArgs *rows = malloc(sizeof(*rows) * size);
-  // Create N threads.
+  // Create N threads to check each row.
   for (int r = 0; r < size; r++)
   {
     rows[r].puzzle = puzzle;
     rows[r].size = size;
     rows[r].start = r;
     pthread_create(&rows[r].thread, NULL, IsRowComplete, &rows[r]);
-    // printf("Thread Created: %#016lx\n", rows[r].thread);
-    // This printf removes a 1,624 byte memory leak
-    // when running on challenger-303. I do not understand.
   }
   bool isComplete = true;
   // Wait for each of the threads to finish.
@@ -25,6 +23,7 @@ bool IsPuzzleComplete(int **puzzle, int size)
     if (!rows[r].result) isComplete = false;
   }
   free(rows);
+
   #ifdef THREAD_DEBUG
     puts("");
   #endif // THREAD_DEBUG
@@ -35,9 +34,10 @@ void *IsRowComplete(void *threadArgs)
 {
   ThreadArgs *args = threadArgs;
   #ifdef THREAD_DEBUG
-    printf("Thread %#016lx, Row %d: Checking completeness...\n",
+    printf("Thread %#016lx, Row %2d: Checking completeness...\n",
            args->thread, args->start);
   #endif // THREAD_DEBUG
+
   // Check if any of the numbers in the row are 0.
   args->result = true;
   for (int c = 0; c < args->size; c++)
@@ -48,8 +48,9 @@ void *IsRowComplete(void *threadArgs)
       break;
     }
   }
+
   #ifdef THREAD_DEBUG
-    printf("Thread %#016lx, Row %d: %s.\n", args->thread, args->start,
+    printf("Thread %#016lx, Row %2d: %s.\n", args->thread, args->start,
            args->result ? "Complete" : "Not complete");
   #endif // THREAD_DEBUG
   pthread_exit(NULL);
