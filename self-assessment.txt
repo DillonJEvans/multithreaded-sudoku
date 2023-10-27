@@ -1,0 +1,8 @@
+Can verify whether it is valid or not - 10/10
+Starts/joins multiple threads to speedup operation - 5/5
+For NxN complete puzzle, can verify whether it is valid or not - 5/5
+The number of threads is proportional to N - 5/5
+Bonus: Can complete puzzles - 2/2
+Bonus: Can complete difficult puzzles - 3/3
+  See puzzle2-difficult.txt or challenger-303.txt (in the puzzles folder) as examples
+Total: 30

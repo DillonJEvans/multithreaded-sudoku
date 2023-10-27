@@ -1,4 +1,5 @@
 16
+
  0 15  1  0    0  0  0  4    0  0  8  0   12  0  7  9
 11  0  0  0    0  0  8  0   16  0  0  9    0  4  0 10
  0  0  0 10   13  0  0  0    6 14  0  0    0  0  0  0
@@ -19,5 +20,5 @@
  0  6  8 11    0  3  0  0    4  7 12  0    0  0  0 15
  0  0  0  0   12  0  0  0    0  8  0  0   13  0  0  0
 
-I got this by selecting Expert on this site:
+I got this by selecting Expert on this site (puzzle #167):
 https://www.sudoku-puzzles-online.com/hexadoku/print-hexadoku.php

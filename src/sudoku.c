@@ -1,3 +1,12 @@
+// You can compile either with the build script or the compile line below.
+// compile: ./build.sh
+// compile: gcc -o sudoku -lpthread -lm src/*.c
+//
+// run (all):    ./runit
+// run (verify): ./sudoku puzzles/puzzle9-valid.txt
+// run (hard):   ./sudoku puzzles/puzzle2-difficult.txt
+// run (harder): ./sudoku puzzles/challenger-303.txt
+
 #include <stdio.h> // printf, puts, fprintf, stderr
 
 #include "is_complete.h"  // IsPuzzleComplete
@@ -28,10 +37,12 @@ int main(int argc, const char *argv[])
     bool isValid = IsPuzzleValid(puzzle, size);
     printf("Valid puzzle? %s\n", isValid ? "true" : "false");
   }
+  // Otherwise, attempt to solve the puzzle.
   else
   {
     puts("Solving puzzle...\n");
     bool isSolved = SolvePuzzle(&puzzle, size);
+    // If the puzzle was solved, display it.
     if (isSolved)
     {
       DisplayPuzzlePretty(puzzle, size);
