@@ -15,7 +15,7 @@ int main(int argc, const char *argv[])
   int **puzzle;
   int size = LoadPuzzle(argv[1], &puzzle);
   if (size == INVALID_PUZZLE) return 1;
-  DisplayPuzzle(puzzle, size);
+  DisplayPuzzlePretty(puzzle, size);
   bool isComplete = IsPuzzleComplete(puzzle, size);
   printf("Complete puzzle? ");
   puts(isComplete ? "true" : "false");
@@ -30,7 +30,7 @@ int main(int argc, const char *argv[])
     bool isSolved = SolvePuzzle(&puzzle, size);
     if (isSolved)
     {
-      DisplayPuzzle(puzzle, size);
+      DisplayPuzzlePretty(puzzle, size);
     }
     else
     {

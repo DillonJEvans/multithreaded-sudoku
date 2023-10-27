@@ -61,3 +61,60 @@ void DisplayPuzzle(int **puzzle, int size)
     printf("\n");
   }
 }
+
+void DisplayPuzzlePretty(int **puzzle, int size)
+{
+  int digits = 1;
+  int tempSize = size;
+  while (tempSize >= 10)
+  {
+    digits++;
+    tempSize /= 10;
+  }
+  int subgridSize = sqrt(size);
+  for (int s1 = 0; s1 < subgridSize; s1++)
+  {
+    for (int s2 = 0; s2 < subgridSize; s2++)
+    {
+      putc('+', stdout);
+      for (int i = 0; i < subgridSize * (digits + 1) + 1; i++)
+      {
+        putc('-', stdout);
+      }
+    }
+    puts("+");
+    for (int r = 0; r < subgridSize; r++)
+    {
+      for (int subC = 0; subC < subgridSize; subC++)
+      {
+        putc('|', stdout);
+	putc(' ', stdout);
+	for (int c = 0; c < subgridSize; c++)
+	{
+	  if (puzzle[s1 * subgridSize + r][subC * subgridSize + c] == 0)
+	  {
+            for (int i = 0; i < digits + 1; i++)
+	    {
+              putc(' ', stdout);
+	    }
+	  }
+	  else
+	  {
+            printf("%*d ", digits, puzzle[s1 * subgridSize + r][subC * subgridSize + c]);
+	
+	  }
+	}
+      }
+      puts("|");
+    }
+  }
+  for (int s = 0; s < subgridSize; s++)
+  {
+    putc('+', stdout);
+    for (int i = 0; i < subgridSize * (digits + 1) + 1; i++)
+    {
+      putc('-', stdout);
+    }
+  }
+  puts("+");
+}
