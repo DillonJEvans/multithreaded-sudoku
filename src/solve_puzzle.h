@@ -9,7 +9,7 @@
 
 #include <string.h>  // memset
 
-#include "puzzle_io.h"   // CopyPuzzle, FreePuzzle
+#include "puzzle.h"      // CopyPuzzle, FreePuzzle
 #include "thread_args.h" // ThreadArgs, THREAD_DEBUG
 
 typedef struct

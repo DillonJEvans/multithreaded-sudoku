@@ -1,8 +1,8 @@
 #include <stdio.h> // fprintf, stderr
 
-#include "is_complete.h" // IsPuzzleComplete
-#include "is_valid.h"    // IsPuzzleValid
-#include "puzzle_io.h"   // LoadPuzzle, FreePuzzle, DisplayPuzzle
+#include "is_complete.h"  // IsPuzzleComplete
+#include "is_valid.h"     // IsPuzzleValid
+#include "puzzle.h"       // LoadPuzzle, FreePuzzle, DisplayPuzzle
 #include "solve_puzzle.h" // SolvePuzzle
 
 int main(int argc, const char *argv[])

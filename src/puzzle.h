@@ -1,5 +1,5 @@
-#ifndef PUZZLE_IO_H_
-#define PUZZLE_IO_H_
+#ifndef PUZZLE_H_
+#define PUZZLE_H_
 
 #include <math.h>   // sqrt
 #include <stdio.h>  // printf, perror, fopen, fscanf, fclose, FILE
@@ -37,4 +37,4 @@ void DisplaySpaces(int n);
 // Returns the number of digits in the integer n.
 int Digits(int n);
 
-#endif // PUZZLE_IO_H_
+#endif // PUZZLE_H_

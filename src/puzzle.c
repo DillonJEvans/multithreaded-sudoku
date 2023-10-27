@@ -1,4 +1,4 @@
-#include "puzzle_io.h"
+#include "puzzle.h"
 
 int LoadPuzzle(const char *filename, int ***puzzle)
 {
