@@ -9,7 +9,7 @@ typedef struct
   pthread_t thread; // The thread ID.
   int **puzzle;     // The puzzle.
   int size;         // The size of the puzzle.
-  int start;        // Where to start (e.g. row #)
+  int start;        // Where to start (e.g. row #).
   bool result;      // Return value of the thread.
 } ThreadArgs;
 
