@@ -23,8 +23,18 @@ void FreePuzzle(int **puzzle, int size);
 void DisplayPuzzle(int **puzzle, int size);
 
 // Displays the puzzle.
+// Replaces 0s with empty spaces.
 // Evenly spaces the numbers.
 // Includes borders around the puzzle and around each subgrid.
 void DisplayPuzzlePretty(int **puzzle, int size);
+
+// Displays the border between rows for DisplayPuzzlePretty.
+void DisplayRowBorder(int subgridSize, int digits);
+
+// Displays n spaces.
+void DisplaySpaces(int n);
+
+// Returns the number of digits in the integer n.
+int Digits(int n);
 
 #endif // PUZZLE_IO_H_

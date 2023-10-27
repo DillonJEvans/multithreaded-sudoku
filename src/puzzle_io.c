@@ -64,57 +64,66 @@ void DisplayPuzzle(int **puzzle, int size)
 
 void DisplayPuzzlePretty(int **puzzle, int size)
 {
-  int digits = 1;
-  int tempSize = size;
-  while (tempSize >= 10)
-  {
-    digits++;
-    tempSize /= 10;
-  }
+  int digits = Digits(size);
   int subgridSize = sqrt(size);
-  for (int s1 = 0; s1 < subgridSize; s1++)
+  // Loop through the subgrids vertically.
+  for (int sr = 0; sr < subgridSize; sr++)
   {
-    for (int s2 = 0; s2 < subgridSize; s2++)
-    {
-      putc('+', stdout);
-      for (int i = 0; i < subgridSize * (digits + 1) + 1; i++)
-      {
-        putc('-', stdout);
-      }
-    }
-    puts("+");
+    DisplayRowBorder(subgridSize, digits);
+    // Loop through the rows in the subgrid.
     for (int r = 0; r < subgridSize; r++)
     {
-      for (int subC = 0; subC < subgridSize; subC++)
+      // Loop through the subgrids horizontally.
+      for (int sc = 0; sc < subgridSize; sc++)
       {
         putc('|', stdout);
-	putc(' ', stdout);
-	for (int c = 0; c < subgridSize; c++)
-	{
-	  if (puzzle[s1 * subgridSize + r][subC * subgridSize + c] == 0)
-	  {
-            for (int i = 0; i < digits + 1; i++)
-	    {
-              putc(' ', stdout);
-	    }
-	  }
-	  else
-	  {
-            printf("%*d ", digits, puzzle[s1 * subgridSize + r][subC * subgridSize + c]);
-	
-	  }
-	}
+        putc(' ', stdout);
+        // Loop through the columns in the subgrid.
+        for (int c = 0; c < subgridSize; c++)
+        {
+          // Display the number (or spaces if it is 0).
+          int row = sr * subgridSize + r;
+          int col = sc * subgridSize + c;
+          int number = puzzle[row][col];
+          if (number == 0) DisplaySpaces(digits + 1);
+          else printf("%*d ", digits, number);
+        }
       }
       puts("|");
     }
   }
+  DisplayRowBorder(subgridSize, digits);
+}
+
+void DisplayRowBorder(int subgridSize, int digits)
+{
+  int dashes = subgridSize * (digits + 1) + 1;
   for (int s = 0; s < subgridSize; s++)
   {
     putc('+', stdout);
-    for (int i = 0; i < subgridSize * (digits + 1) + 1; i++)
+    for (int d = 0; d < dashes; d++)
     {
       putc('-', stdout);
     }
   }
   puts("+");
+}
+
+void DisplaySpaces(int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    putc(' ', stdout);
+  }
+}
+
+int Digits(int n)
+{
+  int digits = 1;
+  while (n >= 10)
+  {
+    digits++;
+    n /= 10;
+  }
+  return digits;
 }
